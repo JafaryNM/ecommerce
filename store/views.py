@@ -1,9 +1,13 @@
+from pyexpat import model
+from typing import List
 from django.shortcuts import render
-from .models import Product,Category
+from django.views.generic import ListView
+from .models import *
 
 # Create your views here.
 
-def all_products(request):
+
+class DisplayProducts(ListView):
+    model=Product
+    tempalate_name='store/home.html'
     
-    products=Product.objects.all()
-    return render(request,'store/home.html',{'products':products})
